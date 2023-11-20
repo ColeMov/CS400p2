@@ -10,11 +10,13 @@ import java.io.FileNotFoundException;
 /**
  * This interface contains the methods used in the backend of the UW Path Finder app
  */
-public class BackendInterface {
-  /*
-  CONSTRUCTOR:
-  public Backend(GraphADT graph)
-   */
+public class BackendImplementation {
+
+    private PlaceholderMap graph;
+  public BackendImplementation(PlaceholderMap graph){
+      this.graph = graph;
+  }
+
 
     /**
      * Reads the data from the provided file path and parses it into this Backend's graph
@@ -23,7 +25,7 @@ public class BackendInterface {
      * @return True if file is successfully loaded
      */
     public boolean readData(String filepath) throws FileNotFoundException{
-
+      return false;
     }
 
     /**
@@ -34,7 +36,7 @@ public class BackendInterface {
      * @return An object containing the shortest path
      */
     public ShortestPathInterface getShortestPath(String origin, String destination){
-
+      return null;
     }
 
 
@@ -47,6 +49,6 @@ public class BackendInterface {
      * @return An array containing the information about the path
      */
     public Double[] getStatistics(ShortestPathInterface path){
-
+      return null;
     }
 }
