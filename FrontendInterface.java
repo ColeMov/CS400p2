@@ -16,7 +16,6 @@ public interface FrontendInterface{
      *     3. Find the shortest path between two buildings.
      *     4. Exit the application.
      * </p>
-     *
      * */
     public String startMainMenu() throws InputMismatchException;
 
@@ -34,6 +33,10 @@ public interface FrontendInterface{
     /**
      * This method will load in the file provided by the user.
      * If the file does not exist, it throws a FileNotFoundException.
+     * <p>
+     *     if loaded successfully:
+     *     File loaded successfully!
+     * </p>
      * */
     public void loadUserFile(String filePath) throws FileNotFoundException;
 
@@ -49,12 +52,20 @@ public interface FrontendInterface{
      * This method will ask the user for two buildings (start and destination)
      * and return the shortest path between them, including all buildings on the way,
      * the walking time for each segment, and the total estimated walking time.
+     *<p>
+     *     Please type in your starting building.
+     *     Please type in your destination building.
+     *     The shortest path between "start" and "destination" is: ...
+     *</p>
      * */
     public String shortestPathBetween(String origin, String destination) throws InputMismatchException;
 
     /**
      * This method will be called once the user choose the exit option at the
      * main menu, and it will end the program and print out a farewell message.
+     *<p>
+     *     See you next time!
+     *</p>
      * */
     public String exitApplication();
 }
