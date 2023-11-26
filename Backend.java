@@ -5,21 +5,18 @@
 // TA: Grant Waldow
 // Lecturer: Florian Heimerl
 
-import org.junit.jupiter.api.extension.RegisterExtension;
-import org.junit.platform.engine.support.descriptor.FileSystemSource;
-
 import java.io.FileNotFoundException;
 import java.io.*;
 
 /**
  * This class implements the BackendInterface for the UW Path Finder app.
  */
-public class BackendImplementation implements BackendInterface {
+public class Backend implements BackendInterface {
     private DijkstraGraph pathGraph;
     private double totalTime = 0.0;
 
     // Constructor to initialize the BackendImplementation with a DijkstraGraph
-    public BackendImplementation(DijkstraGraph graph) {
+    public Backend(DijkstraGraph graph) {
         this.pathGraph = graph;
     }
 
@@ -87,8 +84,8 @@ public class BackendImplementation implements BackendInterface {
      * @param destination The building that the shortest path ends at
      * @return An object containing the shortest path
      */
-    public ShortestPathImplementation getShortestPath(String origin, String destination) {
-        return new ShortestPathImplementation(origin, destination, pathGraph);
+    public ShortestPath getShortestPath(String origin, String destination) {
+        return new ShortestPath(origin, destination, pathGraph);
     }
 
     /**

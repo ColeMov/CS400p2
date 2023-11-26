@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 public class BackendDeveloperTests {
-    private BackendImplementation backend;
+    private Backend backend;
 
     /**
      * Tests that the readData method returns true upon success
@@ -26,7 +26,7 @@ public class BackendDeveloperTests {
     @Test
     public void readFileDataTest(){
         DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
-        BackendImplementation backend = new BackendImplementation(graph);
+        Backend backend = new Backend(graph);
 
         try{
             Assertions.assertTrue(backend.readData("campus.dot"));
@@ -43,7 +43,7 @@ public class BackendDeveloperTests {
     @Test
     public void readFileDataNoFileFoundTest(){
         DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
-        BackendImplementation backend = new BackendImplementation(graph);
+        Backend backend = new Backend(graph);
 
         try{
             backend.readData("fakeFile.txt");
@@ -60,13 +60,13 @@ public class BackendDeveloperTests {
     @Test
     public void shortestPathBackendTest(){
         DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
-        BackendImplementation backend = new BackendImplementation(graph);
+        Backend backend = new Backend(graph);
         try{
             backend.readData("campus.dot");
         }catch(Exception e){
             Assertions.fail("File read error");
         }
-        ShortestPathImplementation shortestPath = backend.getShortestPath("Memorial Union","Science Hall");
+        ShortestPath shortestPath = backend.getShortestPath("Memorial Union","Science Hall");
 
         if(shortestPath == null){
             Assertions.fail("No shortest path returned");
@@ -81,7 +81,7 @@ public class BackendDeveloperTests {
     @Test
     public void getStatisticsTest(){
         DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
-        BackendImplementation backend = new BackendImplementation(graph);
+        Backend backend = new Backend(graph);
 
         try{
             backend.readData("campus.dot");
@@ -104,13 +104,13 @@ public class BackendDeveloperTests {
     @Test
     public void shortestPathImplementationTest(){
         DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
-        BackendImplementation backend = new BackendImplementation(graph);
+        Backend backend = new Backend(graph);
         try{
             backend.readData("campus.dot");
         }catch(Exception e){
             Assertions.fail("File read error");
         }
-        ShortestPathImplementation shortestPath = backend.getShortestPath("Memorial Union","Mack House");
+        ShortestPath shortestPath = backend.getShortestPath("Memorial Union","Mack House");
 
         if(shortestPath.getPathSegments() == null || shortestPath.getWalkingTime() == null || shortestPath.getTotalPathCost() == 0.0){
             Assertions.fail("No shortest path returned");

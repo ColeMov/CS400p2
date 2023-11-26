@@ -11,14 +11,14 @@ import java.util.List;
 /**
  * This class implements the ShortestPathInterface and stores the results of the shortest path search.
  */
-public class ShortestPathImplementation implements ShortestPathInterface {
+public class ShortestPath implements ShortestPathInterface {
 
   private String origin;
   private String destination;
   private DijkstraGraph pathGraph;
 
   // Constructor initializes the ShortestPathImplementation with origin, destination, and the graph
-  protected ShortestPathImplementation(String origin, String destination, DijkstraGraph graph) {
+  protected ShortestPath(String origin, String destination, DijkstraGraph graph) {
     this.origin = origin;
     this.destination = destination;
     this.pathGraph = graph;
