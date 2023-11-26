@@ -5,48 +5,62 @@
 // TA: Grant Waldow
 // Lecturer: Florian Heimerl
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This interface contains the methods to store the results of the shortest path search
+ * This class implements the ShortestPathInterface and stores the results of the shortest path search.
  */
-public class ShortestPathImplementation
-{
+public class ShortestPathImplementation implements ShortestPathInterface {
 
   private String origin;
   private String destination;
+  private DijkstraGraph pathGraph;
 
-  protected ShortestPathImplementation(String origin, String destination)
-  {
+  // Constructor initializes the ShortestPathImplementation with origin, destination, and the graph
+  protected ShortestPathImplementation(String origin, String destination, DijkstraGraph graph) {
     this.origin = origin;
     this.destination = destination;
+    this.pathGraph = graph;
+
+    // Compute the shortest path during object creation
+    graph.computeShortestPath(origin, destination);
   }
 
+  /**
+   * Returns a list of buildings along the shortest path between the origin and destination buildings.
+   *
+   * @return The list of buildings along the shortest path
+   */
+  public List<String> getPathSegments() {
+    return pathGraph.shortestPathData(origin, destination);
+  }
 
-    /**
-     * Returns a list of buildings along the shortest path between the origin and destination
-     * buildings
-     * @return The list of buildings along the shortest path
-     */
-    List<String> getPathSegments(){
-        return null;
-    }
+  /**
+   * Returns the walking time along each segment of the shortest path between the origin and
+   * destination buildings.
+   *
+   * @return The list of walking times along the shortest path
+   */
+  public List<Double> getWalkingTime() {
+    List<String> buildingsVisited = getPathSegments();
+    List<Double> walkTimes = new ArrayList<>(buildingsVisited.size());
 
-    /**
-     * Returns the walking time along each segment of the shortest path between the origin and
-     * destination buildings
-     * @return The list of walking times along the shortest path
-     */
-    List<Double> getWalkingTime(){
-        return null;
+    for (int i = 0; i < buildingsVisited.size() - 1; i++) {
+      if (buildingsVisited.get(i + 1) != null) {
+        // Add the walking time for each segment of the path
+        walkTimes.add(pathGraph.shortestPathCost(buildingsVisited.get(i), buildingsVisited.get(i + 1)));
+      }
     }
+    return walkTimes;
+  }
 
-    /**
-     * Returns the total walking time along the shortest path between the origin and destination
-     * buildings
-     * @return The total walking time along the shortest path, in seconds
-     */
-    double getTotalPathCost(){
-        return -1.0;
-    }
+  /**
+   * Returns the total walking time along the shortest path between the origin and destination buildings.
+   *
+   * @return The total walking time along the shortest path, in seconds
+   */
+  public double getTotalPathCost() {
+    return pathGraph.shortestPathCost(origin, destination);
+  }
 }

@@ -7,6 +7,8 @@
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.io.FileNotFoundException;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,13 +25,15 @@ public class BackendDeveloperTests {
      */
     @Test
     public void readFileDataTest(){
-        PlaceholderMap graph = new PlaceholderMap();
+        DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
         BackendImplementation backend = new BackendImplementation(graph);
 
         try{
             Assertions.assertTrue(backend.readData("campus.dot"));
-        }catch(Exception e){
+        }catch(FileNotFoundException e){
             Assertions.fail("File Not Found");
+        }catch(Exception e){
+            Assertions.fail(e.getMessage());
         }
     }
 
@@ -38,13 +42,15 @@ public class BackendDeveloperTests {
      */
     @Test
     public void readFileDataNoFileFoundTest(){
-        PlaceholderMap graph = new PlaceholderMap();
+        DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
         BackendImplementation backend = new BackendImplementation(graph);
 
         try{
             backend.readData("fakeFile.txt");
-        }catch(Exception e){
+        }catch(FileNotFoundException e){
             Assertions.assertTrue(true);
+        }catch(Exception e){
+            Assertions.fail("Other error");
         }
     }
 
@@ -53,11 +59,16 @@ public class BackendDeveloperTests {
      */
     @Test
     public void shortestPathBackendTest(){
-        PlaceholderMap graph = new PlaceholderMap();
+        DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
         BackendImplementation backend = new BackendImplementation(graph);
+        try{
+            backend.readData("campus.dot");
+        }catch(Exception e){
+            Assertions.fail("File read error");
+        }
+        ShortestPathImplementation shortestPath = backend.getShortestPath("Memorial Union","Science Hall");
 
-        ShortestPathInterface pathTest = backend.getShortestPath("A","C");
-        if(pathTest == null){
+        if(shortestPath == null){
             Assertions.fail("No shortest path returned");
         }else{
             Assertions.assertTrue(true);
@@ -69,12 +80,18 @@ public class BackendDeveloperTests {
      */
     @Test
     public void getStatisticsTest(){
-        PlaceholderMap graph = new PlaceholderMap();
+        DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
         BackendImplementation backend = new BackendImplementation(graph);
 
-        ShortestPathInterface pathTest = backend.getShortestPath("A","C");
-        Double[] pathStats = backend.getStatistics(pathTest);
-        if(pathStats == null){
+        try{
+            backend.readData("campus.dot");
+        }catch(Exception e){
+            Assertions.fail(e.getMessage());
+        }
+
+        Double[] pathStats = backend.getStatistics();
+
+        if(pathStats[0] != 160.0 || pathStats[1] != 508.0 || pathStats[2] != 76605.00000000001){
             Assertions.fail("No shortest path statistics");
         }else{
             Assertions.assertTrue(true);
@@ -82,20 +99,23 @@ public class BackendDeveloperTests {
     }
 
     /**
-     * Tests the ShortestPathImplementation class independently from the backend implementation
+     * Tests the ShortestPathImplementation class and its internal methods
      */
     @Test
     public void shortestPathImplementationTest(){
-        ShortestPathImplementation shortestPath = new ShortestPathImplementation("A","B");
+        DijkstraGraph graph = new DijkstraGraph<String, Double>(new PlaceholderMap<>());
+        BackendImplementation backend = new BackendImplementation(graph);
+        try{
+            backend.readData("campus.dot");
+        }catch(Exception e){
+            Assertions.fail("File read error");
+        }
+        ShortestPathImplementation shortestPath = backend.getShortestPath("Memorial Union","Mack House");
 
-        if(shortestPath.getPathSegments() == null){
-            Assertions.fail("No path segments");
-        }
-        if(shortestPath.getTotalPathCost() == -1.0){
-            Assertions.fail("No path cost");
-        }
-        if(shortestPath.getWalkingTime() == null){
-            Assertions.fail("No walking time");
+        if(shortestPath.getPathSegments() == null || shortestPath.getWalkingTime() == null || shortestPath.getTotalPathCost() == 0.0){
+            Assertions.fail("No shortest path returned");
+        }else{
+            Assertions.assertTrue(true);
         }
     }
 }

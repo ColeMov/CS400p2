@@ -35,5 +35,5 @@ public interface BackendInterface
    * @param path The shortest path between two nodes
    * @return An array containing the information about the path
    */
-  public Double[] getStatistics(ShortestPathInterface path);
+  public Double[] getStatistics();
 }
