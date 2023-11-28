@@ -14,7 +14,7 @@ public class FrontendDeveloperTests extends Frontend {
     private static Scanner scanner;
     
     public FrontendDeveloperTests() {
-	    super(new BackendPlaceholder(), new Scanner(System.in));
+	super(new BackendPlaceholder(), new Scanner(System.in));
     }
     
     @Test
