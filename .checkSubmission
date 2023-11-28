@@ -15,7 +15,7 @@ if [[ ! -f Makefile ]]; then
 	exit 1
 fi
 
-if ! make runBDTests && ! make runFDTest; then
+if ! make runBDTests && ! make runFDTests; then
 	echo
 	echo "Submission Failed Check: 'make runBDTests' and 'make runFDTests' fails, but one of them should succeed; if you have submitted (pushed) 5 or more JUnit test methods then your submission is complete for the mid-week deadline"
 	exit 1

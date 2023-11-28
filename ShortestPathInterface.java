@@ -1,5 +1,4 @@
 import java.util.List;
-
 /**
  * This interface contains the methods to store the results of the shortest path search
  */

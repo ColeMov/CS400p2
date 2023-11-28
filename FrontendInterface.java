@@ -38,7 +38,7 @@ public interface FrontendInterface{
      *     File loaded successfully!
      * </p>
      * */
-    public void loadUserFile(String filePath) throws FileNotFoundException;
+    public boolean loadUserFile(String filePath) throws FileNotFoundException;
 
     /**
      * This method will display the current dataset's statistics including
