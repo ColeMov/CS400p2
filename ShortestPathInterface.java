@@ -1,8 +1,5 @@
 import java.util.List;
-<<<<<<< HEAD
 
-=======
->>>>>>> frontend
 /**
  * This interface contains the methods to store the results of the shortest path search
  */

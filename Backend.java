@@ -7,6 +7,7 @@
 
 import java.io.FileNotFoundException;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * This class implements the BackendInterface for the UW Path Finder app.
@@ -18,6 +19,17 @@ public class Backend implements BackendInterface {
     // Constructor to initialize the BackendImplementation with a DijkstraGraph
     public Backend(DijkstraGraph graph) {
         this.pathGraph = graph;
+    }
+
+    /**
+     * Main method to create frontend instance
+     * @param args
+     */
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+        Backend backend = new Backend(new DijkstraGraph<>(new PlaceholderMap<>()));
+        Frontend frontend = new Frontend(backend, scan);
+        frontend.startMainMenu();
     }
 
     /**

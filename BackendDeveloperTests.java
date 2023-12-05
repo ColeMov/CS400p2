@@ -124,7 +124,7 @@ public class BackendDeveloperTests {
      */
     @Test
     public void readFileIntegrationTest(){
-        TextUITester tester = new TextUITester("1\n4");
+        TextUITester tester = new TextUITester("1\ncampus.dot\n2");
         Scanner scnr = new Scanner(System.in);
         Backend backend = new Backend(new DijkstraGraph<>(new PlaceholderMap<>()));
         Frontend frontend = new Frontend(backend, scnr);
@@ -139,7 +139,7 @@ public class BackendDeveloperTests {
      */
     @Test
     public void displayStatisticsIntegrationTest(){
-        TextUITester tester = new TextUITester("1\n2\n4");
+        TextUITester tester = new TextUITester("1\ncampus.dot\n1\n2\n2");
         Scanner scnr = new Scanner(System.in);
         Backend backend = new Backend(new DijkstraGraph<>(new PlaceholderMap<>()));
         Frontend frontend = new Frontend(backend, scnr);

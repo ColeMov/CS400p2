@@ -5,10 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Frontend implements FrontendInterface{
-<<<<<<< HEAD
-=======
-
->>>>>>> frontend
     private final BackendInterface backend;
     private final Scanner scanner;
 
@@ -70,15 +66,18 @@ public class Frontend implements FrontendInterface{
             if (returnMainMenu().equals("2")) {
                 String farewell = exitApplication();
                 System.out.println(farewell);
-                System.exit(0);
+                break;
             } else {
                 System.out.println("Returning to main menu ...");
+                System.out.println("========================================");
             }
         }
+        return null;
     }
 
     @Override
     public String returnMainMenu() throws InputMismatchException {
+        System.out.println("========================================");
         System.out.println("Great! What else would you like to do?");
         System.out.println("1. Return to Main Menu.");
         System.out.println("2. Exit the application.");
