@@ -7,7 +7,7 @@
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -117,5 +117,36 @@ public class BackendDeveloperTests {
         }else{
             Assertions.assertTrue(true);
         }
+    }
+
+    /**
+     * Tests that the frontend can properly access and read files from the backend
+     */
+    @Test
+    public void readFileIntegrationTest(){
+        TextUITester tester = new TextUITester("1\n4");
+        Scanner scnr = new Scanner(System.in);
+        Backend backend = new Backend(new DijkstraGraph<>(new PlaceholderMap<>()));
+        Frontend frontend = new Frontend(backend, scnr);
+
+        frontend.startMainMenu();
+        String output = tester.checkOutput();
+        Assertions.assertTrue(output.contains("File loaded successfully!"));
+    }
+
+    /**
+     * Tests that the frontend can accept a return and handle the shortest path from backend
+     */
+    @Test
+    public void displayStatisticsIntegrationTest(){
+        TextUITester tester = new TextUITester("1\n2\n4");
+        Scanner scnr = new Scanner(System.in);
+        Backend backend = new Backend(new DijkstraGraph<>(new PlaceholderMap<>()));
+        Frontend frontend = new Frontend(backend, scnr);
+
+        frontend.startMainMenu();
+        String output = tester.checkOutput();
+        Assertions.assertTrue(output.contains("Below is the current dataset."));
+        Assertions.assertTrue(!(output.contains("You have not loaded a file yet")));
     }
 }
