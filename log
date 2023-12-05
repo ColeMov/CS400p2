@@ -1,0 +1,71 @@
+Script started on 2023-12-05 19:52:02+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="136" LINES="22"]
+[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ [K]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ [K]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ [K]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ git status
+[?2004lOn branch backendFinal
+Your branch is up to date with 'origin/backendFinal'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mlog[m
+	[31mp2/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ git log -1
+[?2004l[?1h=[33mcommit 43c8d43e4337a4201b3a7e7f7141cf6ff7bb79c8[m[33m ([m[1;36mHEAD -> [m[1;32mbac[m [33m[m[33m[m[1;36m[m[1;32mkendFinal[m[33m, [m[1;31morigin/backendFinal[m[33m)[m[m
+Author: Cole Movsessian <movsessian@wisc.edu>[m
+Date:   Tue Dec 5 19:50:22 2023 +0000[m
+[m
+    Updated Makefile[m
+[K[?1l>[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ make cleanr[K
+[?2004lrm *.class
+rm: cannot remove '*.class': No such file or directory
+make: *** [Makefile:9: clean] Error 1
+[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ ls
+[?2004lBackend.java                 Makefile
+BackendDeveloperTests.java   MapADT.java
+BackendInterface.java        PlaceholderMap.java
+BackendPlaceholder.java      ShortestPath.java
+BaseGraph.java               ShortestPathInterface.java
+DijkstraGraph.java           TextUITester.java
+Frontend.java                campus.dot
+FrontendDeveloperTests.java  log
+FrontendInterface.java       [0m[01;34mp2[0m
+GraphADT.java
+[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ make run BDTests[K[K[K[K[K[K[K[KBDTests 
+[?2004ljavac -cp ../junit5.jar:. BackendDeveloperTests.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+java -jar ../junit5.jar --class-path=. --select-class=BackendDeveloperTests
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mBackendDeveloperTests[0m [32m✔[0m
+[36m│     ├─[0m [34mreadFileDataTest()[0m [32m✔[0m
+[36m│     ├─[0m [34mshortestPathBackendTest()[0m [32m✔[0m
+[36m│     ├─[0m [34mgetStatisticsTest()[0m [32m✔[0m
+[36m│     ├─[0m [34mdisplayStatisticsIntegrationTest()[0m [32m✔[0m
+[36m│     ├─[0m [34mshortestPathImplementationTest()[0m [32m✔[0m
+[36m│     ├─[0m [34mreadFileIntegrationTest()[0m [32m✔[0m
+[36m│     └─[0m [34mreadFileDataNoFileFoundTest()[0m [32m✔[0m
+[36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
+[36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
+
+Test run finished after 564 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         7 tests found           ]
+[         0 tests skipped         ]
+[         7 tests started         ]
+[         0 tests aborted         ]
+[         7 tests successful      ]
+[         0 tests failed          ]
+
+[?2004h]0;movsessian@my-cs400-vm: ~/p2[01;32mmovsessian@my-cs400-vm[00m:[01;34m~/p2[00m$ exit
+[?2004lexit
+
+Script done on 2023-12-05 19:52:49+00:00 [COMMAND_EXIT_CODE="0"]
