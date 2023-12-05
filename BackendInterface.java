@@ -32,7 +32,10 @@ public interface BackendInterface
    * <li> Number of nodes (buildings)
    * <li> Number of edges
    * <li> Total walking time
+<<<<<<< HEAD
    * @param path The shortest path between two nodes
+=======
+>>>>>>> frontend
    * @return An array containing the information about the path
    */
   public Double[] getStatistics();

@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Frontend implements FrontendInterface{
+<<<<<<< HEAD
+=======
+
+>>>>>>> frontend
     private final BackendInterface backend;
     private final Scanner scanner;
 
